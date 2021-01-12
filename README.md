@@ -18,7 +18,7 @@ d(P<sub>1</sub>, P<sub>2</sub>) = arCosh( Cosh(r<sub>1</sub>)Cosh(r<sub>2</sub>)
 
 The quantity π - |π - |θ<sub>1</sub> - θ<sub>2</sub> ||, represents the smallesr relative angle between P<sub>1</sub> and P<sub>2</sub>.
 
-If we have that d(P<sub>1</sub>, P<sub>2</sub>) < R, then we will connect these two points in the graph. The given project produces a visulisation of this using two pacakages, one which generates the underlying network for a fixed set of parameters, while a second which visualises this network along and implements GUI inputs.  
+If we have that d(P<sub>1</sub>, P<sub>2</sub>) < R, then we will connect these two points in the graph. The given project produces a visulisation of this using two pacakages, one which generates the underlying network for a fixed set of parameters, while a second which produces an associated GUI for tweaking parameters.
 
 
 
