@@ -20,7 +20,10 @@ The quantity π - |π - |θ<sub>1</sub> - θ<sub>2</sub> ||, represents the smal
 
 If we have that d(P<sub>1</sub>, P<sub>2</sub>) < R, then we will connect these two points in the graph. The given project produces a visulisation of this using two pacakages, one which generates the underlying network for a fixed set of parameters, while a second which produces an associated GUI for tweaking parameters.
 
+## File Structure
 
+Comprised of two packages, the first is "Hyperbolic Graph Construction" package. This package focuses on creating the hyperbolic random graph. Vertices are held in an array, (will eventually change to ArrayList for readability). Each vertex holds a pair of random polar co-ordinates given by the appropriate distribution. Each pair is then compared to compute whether there should be an edge between them. The notion of an edge is indicated by a verticies adding each other to their neighbourhood arrays.
 
+The second package is designed to hold a Hyperbolic Random graph and draw it on the Canvas with a specific projection for radial co-ordinates. The GUI contains settings for adjusting α, R and n, (would like to add an adjustment for v at some point). There also choices between the type of projection of the Canvas, the linear scale factor tends to be be a better repsentation. A max Radii of around 6.2 is usually best. 
 
 
