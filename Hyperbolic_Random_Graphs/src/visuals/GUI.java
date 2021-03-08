@@ -51,6 +51,10 @@ public class GUI extends Application {
 		dropdown.getItems().addAll("Euclidean", "Linear Scale Factor");
 		dropdown.getSelectionModel().select(1);
 		
+		/** Button pressed to generate a new stacked Canvas, all values are read from text inputs 
+		* and then used to produced the new canvas.
+		*/
+		
 		reDrawButton.setDefaultButton(true);
 		reDrawButton.setOnAction(e -> {
 			
