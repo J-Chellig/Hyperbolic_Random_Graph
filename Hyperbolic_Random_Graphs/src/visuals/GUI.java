@@ -9,7 +9,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.canvas.Canvas;
 import javafx.stage.Screen;
 import javafx.scene.control.ComboBox;
 
@@ -18,9 +17,6 @@ import javafx.scene.control.ComboBox;
  * 
  * These parameters are alpha, maxRadius and numberOfNodes, theses are described in HyperbolicMath.java documentation. The
  * projection type is discussed in EuclideanConversion.java. 
- * 
- * 
- * 
  * 
  * 
  * @author Jordan
@@ -47,23 +43,21 @@ public class GUI extends Application {
 	private Label conversionTypeLabel = new Label("Type of projection:");
 	
 	private ComboBox<String> dropdown = new ComboBox<String>(); 		
-	
-	private Canvas mainCanvas = new Canvas(Screen.getPrimary().getVisualBounds().getWidth()-120, Screen.getPrimary().getVisualBounds().getHeight() - 120);
-	
-	private HyperbolicCanvas test;
-	
+
+	private BorderPane root = new BorderPane();
 	
 	public void start(Stage stage) {
 	    
 		dropdown.getItems().addAll("Euclidean", "Linear Scale Factor");
-		dropdown.getSelectionModel().select(0);
+		dropdown.getSelectionModel().select(1);
 		
 		reDrawButton.setDefaultButton(true);
 		reDrawButton.setOnAction(e -> {
 			
 			setValues();
-			test = new HyperbolicCanvas(mainCanvas, HyperbolicMath.numberOfNodes);
-			test.reDraw();
+			HyperbolicCanvas stackedCanvas = new HyperbolicCanvas(HyperbolicMath.numberOfNodes);
+		    root.setCenter(stackedCanvas);
+		    stackedCanvas.reDraw();
 			
 		});
 		
@@ -71,11 +65,9 @@ public class GUI extends Application {
 		HBox buttonbar = new HBox(20, alphaLabel, alphaInput, radiusLabel, maxRadiusInput,  numberOfNodesLabel, nodesInput, conversionTypeLabel, dropdown, reDrawButton);
 		
 		
-		BorderPane root = new BorderPane();
-		root.setCenter(mainCanvas);
 		root.setBottom(buttonbar);
 		
-		Scene scene = new Scene(root, mainCanvas.getWidth() + 30, mainCanvas.getHeight() + 30);
+		Scene scene = new Scene(root, Screen.getPrimary().getVisualBounds().getWidth()-90, Screen.getPrimary().getVisualBounds().getHeight()-90);
 		
 		stage.setScene(scene);
 		stage.show();

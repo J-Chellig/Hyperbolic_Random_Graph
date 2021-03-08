@@ -3,8 +3,9 @@ package visuals;
 import hyperbolicGraphConstruction.*;
 import javafx.scene.canvas.*;
 import javafx.scene.paint.*;
+import javafx.stage.Screen;
 
-public class HyperbolicCanvas {
+public class HyperbolicCanvas extends Canvas {
 	
 	/**
 	 * This class deals with drawing a contained HyperbolicGraph. The drawingPlace is the canvas that will be used, with
@@ -12,24 +13,18 @@ public class HyperbolicCanvas {
 	 */
 	
 	private HyperbolicGraph graph;
-	private Canvas drawingPlace;
-	
 	
 	private double drawnRadius;
 	private double vertexRadius = 2;
 	
-	public void setVertexRadius(double vertexRadius) {
-		this.vertexRadius = vertexRadius;
-	}
-
 	private GraphicsContext g;
 	
-	public HyperbolicCanvas(Canvas drawingPlace, int numberofNodes) {
+	public HyperbolicCanvas(int numberofNodes) {
 		
+		super(Screen.getPrimary().getVisualBounds().getWidth()-120, Screen.getPrimary().getVisualBounds().getHeight()-120);
 		graph = new HyperbolicGraph(numberofNodes);
 		drawnRadius = EuclideanConversion.radiiConversion(HyperbolicMath.MaxRadius);
-		this.drawingPlace = drawingPlace;
-		g = drawingPlace.getGraphicsContext2D();
+		g = super.getGraphicsContext2D();
 
 	} 
 	
@@ -41,7 +36,7 @@ public class HyperbolicCanvas {
 		
 		g.setStroke(Color.BLACK);
 		
-		g.strokeOval(drawingPlace.getWidth()/2 - drawnRadius, this.drawingPlace.getHeight()/2 - drawnRadius, 2*drawnRadius, 2*drawnRadius);
+		g.strokeOval(super.getWidth()/2 - drawnRadius, super.getHeight()/2 - drawnRadius, 2*drawnRadius, 2*drawnRadius);
 		
 	}	
 	
@@ -59,8 +54,8 @@ public class HyperbolicCanvas {
     	
     	double[] vertexCanvasCenter = {
     			
-    			0.5*drawingPlace.getWidth() + euclideanCenter[0],
-    			0.5*drawingPlace.getHeight() - euclideanCenter[1]};
+    			0.5*super.getWidth() + euclideanCenter[0],
+    			0.5*super.getHeight() - euclideanCenter[1]};
     	
     	return vertexCanvasCenter;
    }
@@ -129,13 +124,11 @@ public class HyperbolicCanvas {
 	
 	
 	/**
-	 * Clears the canvas, then draws all required parts of the graph.
+	 * Creates a drawing of the Graph on the Canvas, using the parameters as given by the user Input
 	 * 
 	 */
 	public void reDraw() {
 		
-		
-		g.clearRect(0, 0, drawingPlace.getWidth(), drawingPlace.getHeight());
 		drawDisk();
 		drawAllEdges();
 		drawVertices();

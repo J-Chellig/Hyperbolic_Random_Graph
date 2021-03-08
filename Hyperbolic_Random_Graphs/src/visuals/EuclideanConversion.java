@@ -3,7 +3,8 @@ package visuals;
 public class EuclideanConversion {
 	
 	/** a collection of Static methods used to convert the pure Hyperbolic graph into a drawing on the 
-	 * Euclidean plane.
+	 * Euclidean plane. (Mainly focused on turning Hyperbolic Polars to Euclidean Co-ords.) Two different projections are given
+	 * however the linear scaling tends to be more realistic. The global EuclideanProjection variable is controlled by a combo-box in the GUI.
 	 */
 	
 	
